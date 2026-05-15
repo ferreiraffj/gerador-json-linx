@@ -3,143 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gerador de Configuração JSON</title>
-    <style>
-      :root {
-        --primary: #0056b3;
-        --primary-hover: #004494;
-        --bg: #f4f7f6;
-        --card-bg: #ffffff;
-        --text: #333333;
-        --border: #dddddd;
-      }
-
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: var(--bg);
-        color: var(--text);
-        margin: 0;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .container {
-        max-width: 800px;
-        width: 100%;
-        background-color: var(--card-bg);
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-      }
-
-      h1,
-      h2 {
-        text-align: center;
-        color: var(--primary);
-      }
-
-      .form-group {
-        margin-bottom: 15px;
-      }
-
-      label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-      }
-
-      input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid var(--border);
-        border-radius: 5px;
-        box-sizing: border-box;
-        font-size: 16px;
-      }
-
-      .button-group {
-        display: flex;
-        gap: 10px;
-        margin-top: 20px;
-      }
-
-      button,
-      .btn-download {
-        flex: 1;
-        padding: 12px;
-        background-color: var(--primary);
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: bold;
-        text-align: center;
-        text-decoration: none;
-        transition: background 0.3s;
-      }
-
-      button:hover,
-      .btn-download:hover {
-        background-color: var(--primary-hover);
-      }
-
-      .btn-download {
-        background-color: #28a745;
-        display: none; /* Escondido até gerar o JSON */
-      }
-
-      .btn-download:hover {
-        background-color: #218838;
-      }
-
-      .output-section {
-        margin-top: 30px;
-      }
-
-      pre {
-        background-color: #f8f9fa;
-        border: 1px solid var(--border);
-        padding: 15px;
-        border-radius: 5px;
-        overflow-x: auto;
-        font-size: 14px;
-      }
-
-      .history-list {
-        list-style: none;
-        padding: 0;
-      }
-
-      .history-item {
-        background-color: #f8f9fa;
-        border: 1px solid var(--border);
-        margin-bottom: 10px;
-        padding: 15px;
-        border-radius: 5px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .history-info {
-        font-size: 14px;
-      }
-
-      .history-actions button {
-        padding: 8px 12px;
-        font-size: 12px;
-        flex: none;
-        margin-left: 5px;
-      }
-    </style>
+    <title>Gerador de Configuração JSON - Linx</title>
+    <link rel="stylesheet" href="style.css" />
+    <!--
+      Desenvolvido por: [Felipe Ferreira de Jesus]
+      Data: [14/05/2026]
+      Descrição: Esta aplicação gera um arquivo JSON de configuração para o Autoatendimento Tasteone da Linx, facilitando a configuração dos terminais de PDV.
+    -->
   </head>
   <body>
     <div class="container">
-      <h1>Gerador de JSON de Configuração</h1>
+      <h1>Gerador de JSON de Configuração - AA ONE</h1>
 
       <div class="form-group">
         <label for="terminalId">1. Número do Terminal (Código do PDV):</label>
@@ -184,184 +58,61 @@
       </div>
     </div>
 
+    <div class="container instructions">
+      <h2>Como aplicar o JSON gerado</h2>
+      <div class="steps-wrapper">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-text">
+            Acesse o site
+            <a
+              href="https://autoatend.prod.pdv.tasteone.linx.com.br/stable"
+              target="_blank"
+              >Autoatendimento Tasteone</a
+            >. Selecione o <strong>Número do Terminal</strong> correspondente na
+            lista e clique em <strong>Salvar configurações</strong>.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-text">
+            Após salvar, pressione <strong>F12</strong> para abrir as
+            Ferramentas de Desenvolvedor. No menu superior da janela que abriu,
+            clique na aba <strong>Application</strong> (Aplicativo).
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-text">
+            No menu lateral esquerdo, expanda
+            <strong>Storage > Local Storage</strong> e clique no link do site.
+            Procure pela chave <strong><code>AA_ConfigDevice</code></strong
+            >. Dê um clique duplo no valor (Value), apague tudo,
+            <strong>cole o JSON gerado</strong> e aperte Enter. Atualize a
+            página (F5)!
+          </div>
+        </div>
+      </div>
+
+      <div class="video-tutorial">
+        <h3>Tutorial em Vídeo</h3>
+        <div class="video-container">
+          <video controls>
+            <source src="passo-a-passo.mp4" type="video/mp4" />
+            Seu navegador não suporta a reprodução de vídeos.
+          </video>
+        </div>
+      </div>
+    </div>
+
     <div class="container">
       <h2>Histórico (Recentes)</h2>
-      <ul class="history-list" id="historyList">
-        <!-- Itens do histórico aparecerão aqui -->
-      </ul>
-      <button
-        onclick="limparHistorico()"
-        style="background-color: #dc3545; width: 100%; margin-top: 10px"
-      >
+      <ul class="history-list" id="historyList"></ul>
+      <button class="btn-clear" onclick="limparHistorico()">
         Limpar Histórico
       </button>
     </div>
 
-    <script>
-      // Estrutura base do JSON
-      const baseJSON = {
-        IP_SERVIDOR: "autoatend.prod.pdv.tasteone.linx.com.br",
-        TERMINAL_ID: "2",
-        RESHOP: "https://reshop.linx.com.br",
-        SHOW_PRISMA_PAGE: true,
-        SHOW_PAGER_PAGE: false,
-        SHOW_TELL_INFO: false,
-        SHOW_FULL_VALUE: false,
-        DISABLED_START_BUTTON: false,
-        RESHOP_REGISTER_ACTIVE: false,
-        IS_SHOW_YOUR_NAME: true,
-        SHOW_OPTIONTOEAT_PAGE: true,
-        WORK_WITH_SCALE: false,
-        IS_PDV_ONE: false,
-        posId: 2,
-        REACT_APP_TERMINALID: 2,
-        posType: 2,
-        retailerId: "E614FF5D-AF0B-44F0-A4B3-B0BE8092BC31",
-        REACT_APP_STORE_SERVER_ID: 1,
-        REACT_APP_STORE_FRANCHISE_ID: 3429,
-        REACT_APP_STORE_ID: 999,
-      };
-
-      // Inicializa a página carregando o histórico
-      window.onload = function () {
-        carregarHistorico();
-      };
-
-      function gerarJSON() {
-        // Coletar valores
-        const terminalIdStr = document.getElementById("terminalId").value;
-        const terminalIdNum = parseInt(terminalIdStr);
-        const retailerId = document.getElementById("retailerId").value.trim();
-        const serverId = parseInt(document.getElementById("serverId").value);
-        const franchiseId = parseInt(
-          document.getElementById("franchiseId").value,
-        );
-        const storeId = parseInt(document.getElementById("storeId").value);
-
-        // Validação simples
-        if (
-          !terminalIdStr ||
-          !retailerId ||
-          isNaN(serverId) ||
-          isNaN(franchiseId) ||
-          isNaN(storeId)
-        ) {
-          alert("Por favor, preencha todos os campos corretamente.");
-          return;
-        }
-
-        // Clonar o objeto base para não alterar o original diretamente
-        let novoJSON = JSON.parse(JSON.stringify(baseJSON));
-
-        // Substituir as chaves conforme as regras
-        novoJSON["TERMINAL_ID"] = terminalIdStr; // Mantém como String como no modelo original
-        novoJSON["posId"] = terminalIdNum; // Número
-        novoJSON["REACT_APP_TERMINALID"] = terminalIdNum; // Número
-        novoJSON["retailerId"] = retailerId;
-        novoJSON["REACT_APP_STORE_SERVER_ID"] = serverId;
-        novoJSON["REACT_APP_STORE_FRANCHISE_ID"] = franchiseId;
-        novoJSON["REACT_APP_STORE_ID"] = storeId;
-
-        // Converter para texto
-        const jsonString = JSON.stringify(novoJSON, null, 2);
-
-        // Exibir na tela
-        document.getElementById("jsonOutput").textContent = jsonString;
-        document.getElementById("outputSection").style.display = "block";
-
-        // Preparar o Download
-        prepararDownload(jsonString);
-
-        // Salvar no Histórico
-        salvarNoHistorico({
-          data: new Date().toLocaleString(),
-          terminal: terminalIdStr,
-          retailer: retailerId,
-          servidor: serverId,
-          franquia: franchiseId,
-          loja: storeId,
-          jsonText: jsonString,
-        });
-      }
-
-      function prepararDownload(jsonText) {
-        const blob = new Blob([jsonText], { type: "application/json" });
-        const url = URL.createObjectURL(blob);
-        const downloadBtn = document.getElementById("downloadBtn");
-        downloadBtn.href = url;
-        downloadBtn.style.display = "block";
-      }
-
-      function salvarNoHistorico(registro) {
-        let historico = JSON.parse(localStorage.getItem("jsonHistory")) || [];
-        historico.unshift(registro); // Adiciona no início do array
-
-        // Limitar a 10 registros para não lotar o cache
-        if (historico.length > 10) {
-          historico.pop();
-        }
-
-        localStorage.setItem("jsonHistory", JSON.stringify(historico));
-        carregarHistorico();
-      }
-
-      function carregarHistorico() {
-        const historico = JSON.parse(localStorage.getItem("jsonHistory")) || [];
-        const historyList = document.getElementById("historyList");
-        historyList.innerHTML = ""; // Limpa a lista atual
-
-        if (historico.length === 0) {
-          historyList.innerHTML =
-            '<p style="text-align: center; color: #777;">Nenhum histórico encontrado.</p>';
-          return;
-        }
-
-        historico.forEach((item, index) => {
-          const li = document.createElement("li");
-          li.className = "history-item";
-
-          li.innerHTML = `
-                    <div class="history-info">
-                        <strong>${item.data}</strong><br>
-                        Terminal: ${item.terminal} | Servidor: ${item.servidor} | Franquia: ${item.franquia} | Loja: ${item.loja}<br>
-                        <span style="color: #666; font-size: 12px;">Retailer: ${item.retailer || "N/A"}</span>
-                    </div>
-                    <div class="history-actions">
-                        <button onclick='recarregarJSON(${index})'>Ver / Baixar</button>
-                    </div>
-                `;
-          historyList.appendChild(li);
-        });
-      }
-
-      function recarregarJSON(index) {
-        const historico = JSON.parse(localStorage.getItem("jsonHistory")) || [];
-        const item = historico[index];
-
-        if (item) {
-          // Preencher formulário com os dados antigos
-          document.getElementById("terminalId").value = item.terminal;
-          document.getElementById("retailerId").value = item.retailer || ""; // Retorna vazio se for histórico velho
-          document.getElementById("serverId").value = item.servidor;
-          document.getElementById("franchiseId").value = item.franquia;
-          document.getElementById("storeId").value = item.loja;
-
-          // Exibir JSON e preparar botão
-          document.getElementById("jsonOutput").textContent = item.jsonText;
-          document.getElementById("outputSection").style.display = "block";
-          prepararDownload(item.jsonText);
-
-          // Rola a página para cima
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-      }
-
-      function limparHistorico() {
-        if (confirm("Tem certeza que deseja apagar todo o histórico salvo?")) {
-          localStorage.removeItem("jsonHistory");
-          carregarHistorico();
-        }
-      }
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>

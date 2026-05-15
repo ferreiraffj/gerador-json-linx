@@ -1,0 +1,223 @@
+:root {
+    --primary: #0056b3;
+    --primary-hover: #004494;
+    --bg: #f4f7f6;
+    --card-bg: #ffffff;
+    --text: #333333;
+    --border: #dddddd;
+    --instruction-bg: #e9f2fb;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    text-align: center;
+    color: var(--primary);
+    margin-top: 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button, .btn-download {
+    flex: 1;
+    padding: 12px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+button:hover, .btn-download:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-download {
+    background-color: #28a745;
+    display: none;
+}
+
+.btn-download:hover {
+    background-color: #218838;
+}
+
+.btn-clear {
+    background-color: #dc3545; 
+    width: 100%; 
+    margin-top: 10px;
+}
+
+.btn-clear:hover {
+    background-color: #c82333;
+}
+
+.output-section {
+    margin-top: 30px;
+}
+
+pre {
+    background-color: #f8f9fa;
+    border: 1px solid var(--border);
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-size: 14px;
+}
+
+/* Estilos da Lista de Histórico */
+.history-list {
+    list-style: none;
+    padding: 0;
+}
+
+.history-item {
+    background-color: #f8f9fa;
+    border: 1px solid var(--border);
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.history-info {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.history-actions button {
+    padding: 8px 12px;
+    font-size: 12px;
+    flex: none;
+    margin-left: 10px;
+}
+
+/* Estilos das Instruções de Uso */
+.instructions {
+    background-color: var(--instruction-bg);
+    border: 1px solid #b8daff;
+}
+
+.steps-wrapper {
+    margin-bottom: 25px;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.step-number {
+    background-color: var(--primary);
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-right: 15px;
+}
+
+.step-text {
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.step-text a {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+code {
+    background-color: #eeeeee;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #d63384;
+}
+
+/* NOVA SEÇÃO DE ESTILOS DO VÍDEO */
+.video-tutorial {
+    border-top: 1px solid #b8daff;
+    padding-top: 20px;
+}
+
+.video-tutorial h3 {
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.video-container {
+    width: 100%;
+    /* Mantém a proporção 16:9 widescreen clássica */
+    aspect-ratio: 16 / 9; 
+    background-color: black; /* Fundo preto enquanto carrega */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain; /* Garante que o vídeo inteiro apareça sem cortes */
+}
